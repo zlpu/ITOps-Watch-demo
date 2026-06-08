@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  # Nginx 反向代理服务
+  nginx:
+    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/nginx:alpine
+    container_name: itopswatch-nginx
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./logs/nginx:/var/log/nginx
+      - /etc/localtime:/etc/localtime:ro
+    depends_on:
+      - itopswatch-web
+      - itopswatch-api
+    restart: unless-stopped
+    network_mode: "host"
+
+  # 前端Web服务
+  itopswatch-web:
+    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/itopswatch-web:v7.1-pro
+    container_name: itopswatch-web
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    network_mode: "host"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # 后端API服务
+  itopswatch-api:
+    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/itopswatch-api-en:v7.1-pro
+    container_name: itopswatch-api
+    user: root
+    environment:
+      - TZ=Asia/Shanghai
+      - DB_HOST=127.0.0.1
+      - DB_PORT=3306
+      - API_PORT=5001
+    volumes:
+      - /sys/class/dmi/id/product_uuid:/usr/local/log1:ro
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    depends_on:
+      - mysql
+    restart: unless-stopped
+    network_mode: "host"
+
+  # MariaDB 数据库服务
+  mysql:
+    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/itopswatch-db:v7.1-pro
+    container_name: itopswatch-db
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./data71:/var/lib/mysql
+      - ./logs/mysql:/var/log/mysql
+    restart: unless-stopped
+    network_mode: "host"
+
+volumes:
+  mysql_data71:
+    driver: local
