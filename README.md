@@ -358,8 +358,13 @@ docker-compose up -d
 
 ```bash
 # 下载项目
+#x86-64
 git clone https://github.com/zlpu/ITOps-Watch-demo.git
-cd ITOps-Watch-demo/install-itops-watch(Professional)
+cd ITOps-Watch-demo/install-itops-watch(Professional)/x86-64/
+
+#arm64
+git clone https://github.com/zlpu/ITOps-Watch-demo.git
+cd ITOps-Watch-demo/install-itops-watch(Professional)/arm64/
 
 # 启动服务
 docker-compose up -d
