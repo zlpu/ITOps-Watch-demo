@@ -20,7 +20,7 @@ services:
 
   # 前端Web服务
   itopswatch-web:
-    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/itopswatch-web:v7.1-pro
+    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/itopswatch-web:v7.2-pro
     container_name: itopswatch-web
     environment:
       - TZ=Asia/Shanghai
@@ -37,7 +37,7 @@ services:
 
   # 后端API服务
   itopswatch-api:
-    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/itopswatch-api-en:v7.1-pro
+    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/itopswatch-api-en:v7.2-pro
     container_name: itopswatch-api
     user: root
     environment:
@@ -58,7 +58,7 @@ services:
 
   # MariaDB 数据库服务
   mysql:
-    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/itopswatch-db:v7.1-pro
+    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/itopswatch-db:v7.2-pro
     container_name: itopswatch-db
     environment:
       - TZ=Asia/Shanghai
