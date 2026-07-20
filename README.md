@@ -10,7 +10,7 @@ Zabbix & Prometheus 双数据源 · 可视化大屏 · AI 智能巡检 · AI 智
 
 零配置接入 · 开箱即用 · Docker 一键部署 · 5 分钟快速上线
 
-[在线演示](https://itops-watch.data-demo.cn/) · [官网](https://itops-watch.data-demo.cn)
+
 
 </div>
 
@@ -39,9 +39,6 @@ ITOps-Watch 是一款专为运维团队打造的企业级监控平台，支持 *
 IT 运维监控、数据中心可视化、多机房统一监控、运维大屏展示、多数据源统一管理
 
 
-<p align="center">
-  <img src="项目介绍/images/wechat.jpg" width="200">
-</p>
 
 - **作者**: 18288669701
 
