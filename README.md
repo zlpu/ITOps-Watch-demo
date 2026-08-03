@@ -10,6 +10,7 @@ Zabbix & Prometheus 双数据源 · 可视化大屏 · AI 智能巡检 · AI 智
 
 零配置接入 · 开箱即用 · Docker 一键部署 · 5 分钟快速上线
 
+<img width="1826" height="894" alt="image" src="https://github.com/user-attachments/assets/fa12d3f8-f2f7-43e9-ac34-108c50538b9a" />
 
 
 </div>
