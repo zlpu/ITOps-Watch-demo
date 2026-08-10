@@ -1,12 +1,12 @@
-version: '3.8'
-
 services:
   # Nginx 反向代理服务
   nginx:
     image: registry.cn-chengdu.aliyuncs.com/pzl_devops/nginx:alpine-arm
+    platform: linux/arm64
     container_name: itopswatch-nginx
     environment:
-      - TZ=Asia/Shanghai
+      # 容器时区。
+      TZ: Asia/Shanghai
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
@@ -20,10 +20,13 @@ services:
 
   # 前端Web服务
   itopswatch-web:
-    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/itopswatch-web:v7.2-pro-arm64
+    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/itopswatch-web:7.5-pro-0806-arm64
+    platform: linux/arm64
+    pull_policy: never
     container_name: itopswatch-web
     environment:
-      - TZ=Asia/Shanghai
+      # 容器时区。
+      TZ: Asia/Shanghai
     volumes:
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
@@ -37,37 +40,66 @@ services:
 
   # 后端API服务
   itopswatch-api:
-    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/itopswatch-api-en:v7.2-pro-arm64
+    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/itopswatch-api-en:7.5-pro-0806-arm64
+    platform: linux/arm64
+    pull_policy: never
     container_name: itopswatch-api
     user: root
     environment:
-      - TZ=Asia/Shanghai
-      - DB_HOST=127.0.0.1
-      - DB_PORT=3306
-      - API_PORT=5001
+      # 容器时区。
+      TZ: Asia/Shanghai
+      # 后端 API 监听端口。
+      API_PORT: "5001"
+      # 仅关闭下方宽松模式时生效，用于指定严格模式下可信的代理 IP/CIDR。
+      ITOPSWATCH_TRUSTED_PROXIES: "${ITOPSWATCH_TRUSTED_PROXIES:-127.0.0.1/32,::1/128}"
+      # 不限制代理层数，直接使用转发链中最左侧的有效客户端 IP
+      ITOPSWATCH_TRUST_ALL_FORWARDED_IPS: "${ITOPSWATCH_TRUST_ALL_FORWARDED_IPS:-true}"
+      # 跨域开发地址；生产环境通过同源 IP 或域名访问时自动放行
+      ITOPSWATCH_ALLOWED_ORIGINS: "http://localhost:3000,http://127.0.0.1:3000"
+      #关闭目标网段限制
+      ITOPSWATCH_ALLOW_ALL_OUTBOUND: "true"
+      # API 调试代理最大响应体，默认 2 MiB
+      ITOPSWATCH_MAX_PROXY_RESPONSE_BYTES: "2097152"
+      # 记住登录后的会话有效期，默认 30 天
+      ITOPSWATCH_REMEMBER_LOGIN_DAYS: "30"
+      # 根据请求协议自动设置 Cookie Secure 属性
+      ITOPSWATCH_COOKIE_SECURE: auto
+      # 仅在 users 表为空时创建初始管理员
+      ITOPSWATCH_ALLOW_ADMIN_BOOTSTRAP: "true"
+      # 初始管理员用户名
+      ITOPSWATCH_BOOTSTRAP_ADMIN_USERNAME: admin
+      # 初始管理员密码，不覆盖已有账号。
+      ITOPSWATCH_BOOTSTRAP_ADMIN_PASSWORD: itops-watch1
     volumes:
       - /sys/class/dmi/id/product_uuid:/usr/local/log1:ro
       - ./logs:/app/logs
       - ./data:/app/data
+      - ./runtime:/app/runtime
       - /etc/localtime:/etc/localtime:ro
-      #- /etc/timezone:/etc/timezone:ro
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     restart: unless-stopped
     network_mode: "host"
 
   # MariaDB 数据库服务
   mysql:
-    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/itopswatch-db:v7.2-pro-arm64
+    image: registry.cn-chengdu.aliyuncs.com/pzl_devops/itopswatch-db:7.5-pro-0806-arm64
+    platform: linux/arm64
+    pull_policy: never
     container_name: itopswatch-db
     environment:
-      - TZ=Asia/Shanghai
+      # 数据库容器时区。
+      TZ: Asia/Shanghai
     volumes:
       - ./data71:/var/lib/mysql
       - ./logs/mysql:/var/log/mysql
     restart: unless-stopped
     network_mode: "host"
-
-volumes:
-  mysql_data71:
-    driver: local
+    healthcheck:
+      # MariaDB 完成初始化并可连接后，API 容器才会启动。
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
