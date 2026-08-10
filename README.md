@@ -2,261 +2,155 @@
 
 # ITOps-Watch
 
-专为运维团队打造的监控平台
+面向运维团队的一体化监控与智能运维平台
 
 > 本系统原名 ZabbixWatch，2026.3.23 正式更名为 ITOps-Watch
 
-Zabbix & Prometheus 双数据源 · 可视化大屏 · AI 智能巡检 · AI 智能告警 · 动态网络拓扑
+多数据源监控 · 可视化大屏 · AI+告警 · AI+巡检 · 网络拓扑 · 3D 机房
 
-零配置接入 · 开箱即用 · Docker 一键部署 · 5 分钟快速上线
+统一入口 · 快速部署 · 灵活扩展 · x86-64 / ARM64
 
-<img width="1826" height="894" alt="image" src="https://github.com/user-attachments/assets/fa12d3f8-f2f7-43e9-ac34-108c50538b9a" />
+[官网](https://itops-watch.data-demo.cn) · [GitHub](https://github.com/zlpu/ITOps-Watch-demo) · [Gitee](https://gitee.com/root-pu/ITOps-Watch-demo)
 
+<img width="1910" height="995" alt="image" src="https://github.com/user-attachments/assets/5170cc87-2e62-4591-9594-be9d5ba986dd" />
 
 </div>
 
 ## 项目简介
 
-ITOps-Watch 是一款专为运维团队打造的企业级监控平台，支持 **Zabbix 与 Prometheus 数据源**接入，提供可视化大屏、3D机房可视化、AI+智能巡检、AI+智能告警、自定义大屏、动态网络拓扑等核心功能，实现运维监控的智能化、简单化。
+ITOps-Watch 是一款面向企业运维团队的综合监控平台，用于统一管理基础设施、网络设备、业务接口、数据库、告警和巡检任务。
 
-官网：https://itops-watch.data-demo.cn
+平台可接入 Zabbix 与 Prometheus，将分散的监控数据汇总到统一界面，通过数据大屏、告警地图、网络拓扑和 3D 机房等方式直观呈现运行状态。同时结合 AI 分析、自动巡检和多渠道通知，帮助运维人员更快发现问题、判断影响并完成日常巡检。
 
-### 核心功能
+ITOps-Watch 不替代现有监控系统，而是在其基础上补充统一展示、业务关联、智能分析和运维协同能力。
 
-- **多数据源智能采集**：支持 Zabbix（5.x/6.x/7.x）与 Prometheus 数据源，可同时接入多个实例统一管理；自动采集 CPU、内存、磁盘、网络等关键指标，支持自定义指标键值映射，灵活扩展监控维度
-- **可视化监控大屏**：提供默认可视化大屏与拖拽式大屏编辑器，支持多种图表类型、大屏轮播、地图告警展示、历史数据趋势分析；支持**组件订阅功能**，可自由订阅和配置大屏组件，灵活定制监控视图；可自定义首页展示主机与布局
-- **3D机房可视化**：第一视角直观的监控机房、机柜的运行情况，可以在机柜上直观的看到设备运行状态。
-- **AI 智能运维**：集成 AI 大模型，支持 AI+告警自定义告警规则、自动分析研判;支持主机、数据库、web站点自动巡检，生成巡检报告、发送巡检报告(pdf、word）；
-- **多渠道通知**：微信、钉钉、飞书、邮件多渠道通知，支持告警语音播报及 Webhook 推送告警消息到第三方平台，支持发送巡检报告
-- **数据库监控**：监控oracle、mysql、sqlserver、postgresql数据库，支持告警自定义；
-- **Web 站点监控**：监控 Web 站点可用性与响应时间，支持 SSL 证书到期监控与提醒，及时发现站点故障与安全风险
-- **网络拓扑与扫描**：用户可根据自身环境自定义网络拓扑图，动态展示实时流量及主机数据，支持导入导出；内置多网段 IP 存活扫描，快速发现网络中的活跃设备
-- **主机采集管理**：直接在 ITOps-Watch 上管理被监控主机，支持添加、删除、编辑主机信息，修改 Zabbix 监控项及触发器，监控历史数据直观展示
-- **导入导出与多语言**：支持监控数据源、网络拓扑、Web 监控站点、自定义看板、扫描网段等数据的批量导入导出；系统支持中英文语言切换
-- **Docker 一键部署**：支持 Docker Compose 一键部署，5 分钟快速上线，简化运维部署流程
+## 能做什么
 
-### 适用场景
+### 统一管理监控数据
 
-IT 运维监控、数据中心可视化、多机房统一监控、运维大屏展示、多数据源统一管理
+- 接入并管理多个 Zabbix、Prometheus 数据源。
+- 设置默认数据源，并在不同监控环境之间快速切换。
+- 统一维护常用监控指标，适配不同监控模板和采集方式。
+- 不同数据源的数据、配置和大屏布局相互隔离。
 
+### 建设企业监控大屏
 
+- 通过组件库组合主机、网络、数据库、业务接口和告警数据。
+- 展示资源使用率、运行状态、TOP 排名和趋势变化。
+- 支持按数据源保存大屏布局，满足不同环境的展示需求。
+- 支持大屏轮播和静默刷新，适用于值班室、机房和运维中心。
 
-- **作者**: 18288669701
+### 在地图上查看资源与告警
 
+- 提供世界、中国、省级和市级地图。
+- 支持标准地图与卫星地图展示。
+- 将主机、数据库和 Web 业务的告警关联到实际位置。
+- 汇总节点状态、告警趋势及告警恢复情况。
 
-## 版本历史
+### 管理主机与网络设备
 
-### v7.2 (2026-06-27) - 当前版本
-- 3D机房可视化
-- 完善数据库监控
+- 集中查看主机状态、资源指标和历史趋势。
+- 为主机维护位置、类型、业务关系和软件资产信息。
+- 将网络设备从普通主机中独立分类管理。
+- 展示网络接口状态、接口流量、VLAN 流量和设备资源情况。
+- 同时适配 Zabbix 与 Prometheus 监控场景。
 
+### 监控业务接口与数据库
 
-### v7.1 (2026-06-07) 
-- 数据大屏支持组件订阅模式、自定义调整大屏布局
-- 新增支持巡检数据库、web站点
-- 修复前面版本的 BUG
-- 调整授权机制
+- 监控 Web 站点和业务接口的可用性、响应时间、状态码及 SSL 证书。
+- 根据实际业务设置离线判断规则。
+- 支持 MySQL、MariaDB、PostgreSQL、SQL Server、Oracle 和 Oracle 11G。
+- 查看数据库连接状态、关键性能指标和历史趋势。
+- 可按数据库类型扩展自定义监控指标。
 
+### AI+告警与 AI+巡检
 
-### v6.1 (2026-03-24) 
+- 为主机、Web 和数据库统一配置告警规则。
+- 支持告警等级、恢复判断、规则预设和批量管理。
+- 可选用 AI 对告警进行分析，辅助定位问题。
+- 支持主机、Web、数据库的手动巡检和定时巡检。
+- 自动生成 Word、PDF 巡检报告。
+- 通过企业微信、飞书、钉钉、邮件或 Webhook 发送消息和报告。
 
-- ZabbixWatch 正式更名为 **ITOps-Watch**
-- 全面支持 **Prometheus** 数据源接入，内置常见 PromQL 查询语句
-- 重写自定义看板功能
-- 修复前面版本的 BUG
+### 可视化业务关系
 
-### v6.0 (2026-03-01)
+- 自定义网络拓扑，关联主机、网络设备、Web 和数据库对象。
+- 在拓扑中查看对象状态、流量和历史数据。
+- 管理机房、机柜和 U 位资产，通过 3D 场景查看设备运行情况。
+- 通过业务关联快速了解主机承载的数据库、应用和软件资产。
 
-- 系统架构调整，解决系统卡顿问题
-- Web 监控：支持 SSL 证书监控
-- 主机管理和监控历史数据功能合并，直观展示主机资源使用情况
+### 系统管理与审计
 
-### v5.2 (2026-02-23)
+- 管理用户、数据源、指标、AI 服务和语音告警。
+- 查看登录日志和重要操作记录。
+- 支持中英文界面。
+- 提供 Docker Compose 部署和独立 ARM64 版本。
 
-- 网络扫描：支持扫描多个网段 IP 存活状态
-- 多语言：系统支持中英文语言切换
-- 导入导出功能：网络拓扑、Web 监控站点、自定义看板、扫描网段
-- 优化首页展示的指标
+## 适用场景
 
-### v5.0 (2026-02)
+- 企业 IT 基础设施统一监控。
+- 多数据源、多机房集中展示。
+- 运维值班室和监控中心大屏。
+- 网络设备与接口流量管理。
+- 业务接口和数据库可用性监控。
+- 自动巡检、报告生成和告警通知。
+- 数据中心机房与资产可视化。
 
-- 主机配置管理：可在系统上管理被监控主机，包括添加、删除、编辑信息
-- 告警语音播报：支持在系统页面中进行告警的语音播报
-- 新增邮件告警方式
-- 优化前端数据加载性能，减少客户端资源消耗
+## 产品展示
 
-### v4.0 (2026-01-18)
+### 1. 登录与数据源管理
 
-- 支持自定义监控指标键值：用户自行维护指标键值映射关系
-- 支持过滤首页展示的主机：可自定义需要在首页展示的主机
-- 新增网络拓扑功能：用户可以根据自己的环境自定义网络拓扑，动态展示实时流量及主机数据
-- 数据库切换为 MariaDB：解决 MySQL8 适配问题
-
-### v3.0 (2025-12-02)
-
-- 地图告警：大屏新增地图样式告警展示
-- 可见名称：全面支持 Zabbix 主机可见名称
-- 流程优化：取消数据初始化页面，解决认证失败
-- 规则持久化：告警规则配置持久化存储
-- 时间筛选：告警信息支持时间范围查询
-- 状态判断：在线/离线增加双重判断标准
-- 磁盘显示：修复磁盘使用率显示问题
-
-### v2.0 (2025-11-04)
-
-- 零配置接入：直接接入 Zabbix
-- 自定义大屏：拖拽式编辑器
-- 多数据源：支持多个 Zabbix
-- AI 增强：内置大模型
-- 大屏优化：流量 TOP10
-- 架构重构：模块化设计
-
-### v1.1 (2025-09-14)
-
-- 扩展 Zabbix 版本支持（5.x/6.x/7.x）
-- 自定义资产组显示
-- 自定义时间段查询
-- 简化 Zabbix 配置
-- Docker Compose 部署
-
-### v1.0 (2025-08-29)
-
-- 首次发布
-- 基础监控大屏
-- 历史数据趋势图
-- Web 站点监控
-- AI + 告警分析
-- Webhook 消息通知
-- 容器化部署
+登录后直接进入监控大屏。首次使用时，管理员先在系统设置中添加并启用数据源。
 
 
+### 2. 数据大屏与告警地图
 
-## 专业版使用教程
+数据大屏集中展示监控对象、关键指标、告警和运行趋势，可根据实际环境选择所需组件。
 
-
-#### 1. 首次登录
-
-访问地址: http://your-server:8088
-默认账号: admin / watch
-
-注意：首次登录后请立即修改密码
-
-![](项目介绍/images/login.png)
-
-#### 2. 配置数据源
-
-操作路径：右上角系统设置 → 数据源配置
-
-支持两种数据源类型：
-
-**Zabbix 数据源：**
-- Zabbix URL: http://your-zabbix-server
-- 用户名: Admin（使用实际的账号密码）
-- 密码: zabbix
-
-**Prometheus 数据源：**
-- Prometheus URL: http://your-prometheus-server:9090
-- 认证信息（如有）
-
-点击测试连接，确认连接成功后保存配置。
-
-零配置说明：无需在 Zabbix/Prometheus 端做任何修改，直接配置即可使用。
-
-![](项目介绍/images/datasources.png)
-
-#### 3. 查看监控大屏
-
-操作路径：左侧菜单 → 数据大屏
-
-功能说明：
-- 自动加载数据，实时刷新
-- 支持自定义资产组显示
-- 支持全屏展示（F11 全屏 / ESC 退出）
-- 地图告警展示
-- 支持组件订阅
 <img width="1910" height="995" alt="image" src="https://github.com/user-attachments/assets/aaff21e4-9708-444d-81b8-6282d77fed18" />
 
-操作: 左侧菜单 → 数据大屏-网络拓扑
+### 3. 网络拓扑
 
-功能: 自定义网络拓扑图-关联主机实时数据
+通过拓扑关系展示主机、网络设备、Web 和数据库对象，并关联状态、流量和历史数据。
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/93124af8-bcb2-421b-8d21-f81446923899" />
 
-操作: 左侧菜单 → 数据大屏- 机房可视化
+### 4. 3D 机房可视化
+
+支持机房、机柜、U 位资产和设备状态管理，适合数据中心资产展示和日常巡查。
+
 <img width="1910" height="995" alt="image" src="https://github.com/user-attachments/assets/636084ea-56f2-4fcb-a29e-b5364bb55fb3" />
-<img width="1708" height="890" alt="image" src="https://github.com/user-attachments/assets/51134cdb-4310-483f-8959-8c1ee5f08f0c" />
+
+### 5. 主机管理
+
+统一查看主机状态、资源使用、历史数据、位置、分类和业务关系。
 
 
-#### 4. 主机管理与历史数据
+### 6. Web 业务监控
 
-操作路径：左侧菜单 → 主机管理
-
-功能说明：
-- 主机资源使用情况直观展示（CPU、内存、磁盘、网络等）
-- 自定义时间段查询（精确到分钟）
-- 多指标对比分析
-- 支持数据导出
-
-![](项目介绍/images/page_history1.png)
-![](项目介绍/images/page_history2.png)
-
-#### 5. Web 监控
-
-操作路径：左侧菜单 → Web 监控
-
-功能说明：
-- 实时监控站点状态
-- 响应时间分析
-- 可用性统计
-- SSL 证书到期监控与提醒
-
-![](项目介绍/images/page_web.png)
-
-#### 6. 数据库监控
-
-操作路径：左侧菜单 → 数据库监控
-
-功能说明：
-- 实时数据库状态
-- 关键指标采集
-<img width="1910" height="995" alt="image" src="https://github.com/user-attachments/assets/a80ae53c-a4f5-45aa-8329-f3ff9468a102" />
+用于掌握站点和业务接口的可用性、响应速度、证书状态及历史变化。
 
 
-#### 7. AI+告警
+### 7. 数据库监控
 
-操作路径：左侧菜单 → AI+告警
+统一管理数据库连接和运行指标，并支持按数据库类型扩展监控内容。
 
-告警规则配置：
-- 主机告警规则
-- Web 站点告警规则
-- 自定义告警阈值和时间窗口
-- AI 自动分析研判告警信息
 
-![](项目介绍/images/page_alert_rules.png)
+### 8. AI+告警
 
-消息配置：
-- 支持微信、飞书、钉钉、邮件
-- 支持告警语音播报
-- 支持 Webhook 推送告警消息到第三方平台
-- 自定义消息模板
+告警规则覆盖主机、Web 和数据库，支持统一管理、恢复判断和告警分析。
 
-![](项目介绍/images/page_alert_msg.png)
 
-AI 模型配置：
-- 内置服务商：硅基流动、DeepSeek、OpenAI
-- 支持自定义模型 API 地址和 Key
 
-![](项目介绍/images/page_alert_ai.png)
+消息中心用于维护通知渠道、告警模板和恢复模板。
 
-#### 8. AI+智能巡检
 
-操作路径：左侧菜单 → AI+智能巡检
+AI 配置可接入主流大模型或兼容服务，用于告警分析和巡检报告生成。
 
-功能说明：
-- AI 自动分析监控数据，智能识别异常模式
-- 提供运维建议与巡检报告word pdf
-- 支持发送 PDF 巡检报告（微信、钉钉、飞书、邮件）
-- 可配置定时巡检任务
+
+### 9. AI+巡检
+
+支持创建主机、Web 和数据库巡检任务，定时生成结果和巡检报告。
 
 <img width="1920" height="1040" alt="image" src="https://github.com/user-attachments/assets/71b494e7-33d2-4c9d-b603-12d3a5debc1f" />
 <img width="1910" height="995" alt="image" src="https://github.com/user-attachments/assets/c3f8088c-6139-414f-9934-e2947597895b" />
@@ -265,143 +159,110 @@ AI 模型配置：
 <img width="1920" height="1040" alt="image" src="https://github.com/user-attachments/assets/d3015fbe-7c8f-46f3-a2a6-ad84051da4ee" />
 
 
+### 10. 指标管理
 
-#### 9. 主机采集管理
+通过统一的指标配置适配不同监控模板，为大屏、告警、巡检和设备面板提供数据基础。
 
-操作路径：左侧菜单 → 主机管理
 
-功能说明：
-- 直接在 ITOps-Watch 上管理被监控主机，支持添加、删除、编辑主机信息
-- 修改 Zabbix 监控项及触发器
-- 监控历史数据直观展示
+### 11. 系统设置
 
-#### 10. 网络扫描
+系统设置用于管理平台基础信息、用户、数据源、AI、会话、数据保留和日志。
 
-操作路径：左侧菜单 → 网络扫描
 
-功能说明：
-- 支持扫描多个网段 IP 存活状态
-- 快速发现网络中的活跃设备
-- 支持扫描网段的导入导出
 
-#### 11. 制作自定义大屏
-
-操作路径：左侧菜单 → 制作大屏 → 新建
-
-操作流程：
-1. 拖拽组件到画布
-2. 调整布局和大小
-3. 配置数据源
-4. 设置背景和样式
-5. 预览效果
-6. 保存大屏
-
-![](项目介绍/images/page_bashboard_edit.png)
-![](项目介绍/images/page_show.png)
-
-#### 11. 指标管理
-
-操作路径：系统设置 → 指标管理
-
-功能说明：
-- 监控指标键值映射管理（Zabbix item key / Prometheus PromQL）
-- 首页主机过滤
-- Prometheus 自定义 PromQL 查询语句配置
-
-<img width="1840" height="924" alt="image" src="https://github.com/user-attachments/assets/4a893190-8006-4628-add4-aefa46a0d8ad" />
-<img width="1856" height="930" alt="image" src="https://github.com/user-attachments/assets/ffa998d4-578e-459b-ab87-5a0ea1618a29" />
-
-#### 12. 系统设置
-
-操作路径：左侧菜单 → 系统设置
-
-功能说明：
-- 定义首页大屏标题
-- 设置会话有效期
-- 配置数据存储时长
-
-![](项目介绍/images/page_setings.png)
-
-#### 13. 导入导出与多语言
-
-功能说明：
-- 支持网络拓扑、Web 监控站点、自定义看板、扫描网段等数据的批量导入导出
-- 系统支持中英文语言切换（右上角语言切换按钮）
-
-## 部署指南
+## 快速部署
 
 ### 环境要求
 
-- Docker 20.10+
-- Docker Compose 1.29+
-- Zabbix Server 5.0+ 或 Prometheus
-- Linux（CentOS 7+、Ubuntu 18.04+、Debian 10+）
+- Linux x86-64 或 ARM64。
+- Docker 20.10+。
+- Docker Compose v2，或兼容的 Docker Compose 1.29+。
+- 可访问的 Zabbix 或 Prometheus 数据源。
 
->本系统需要使用宿主机80、8088、3306、3367、5001、5000，请确保这些端口未被其他服务占用。【无法使用环境变量修改端口】
+> 当前部署使用 host 网络模式，请提前确认相关端口未被占用。
 
-### 一、社区版部署
+### 部署包联系电话18288669701 或微信 pzl960504
 
-```bash
-# 下载项目
-git clone https://github.com/zlpu/ITOps-Watch-demo.git
-cd ITOps-Watch-demo/Install-zabbixwatch(Community)
 
-# 启动服务
-docker-compose up -d
-```
-访问：http://your-server-ip:8088  
-默认账号：admin / admin123
+部署完成后访问地址：`http://your-server-ip:8088`
 
-### 二、专业版部署
+首次初始化账号：
 
-```bash
-# 下载项目
-#x86-64
-git clone https://github.com/zlpu/ITOps-Watch-demo.git
-## 国内：使用git clone https://github.com/zlpu/ITOps-Watch-demo.git
-cd ITOps-Watch-demo/Install-itops-watch-Professional
+- 用户名：`admin`
+- 密码：`itops-watch1`
 
-#arm64
-git clone https://github.com/zlpu/ITOps-Watch-demo.git
-## 国内：使用git clone https://github.com/zlpu/ITOps-Watch-demo.git
-cd ITOps-Watch-demo/install-itops-watch(Professional)/arm64/
+> 首次登录后请立即修改密码。
 
-# 启动服务
-docker-compose up -d
-```
-
-访问：http://your-server-ip:8088  
-默认账号：admin / watch
-
-**部署完成后需购买授权码进行激活使用**
-
-### 三、服务管理
+### 常用命令
 
 ```bash
-# 停止服务（保留数据）
-docker-compose stop
+# 查看日志
+docker compose logs -f
 
-# 停止并删除容器（保留数据卷）
-docker-compose down
+# 停止服务
+docker compose stop
 
-# 完全卸载（删除所有数据）
-docker-compose down -v
+# 更新并重启
+docker compose pull
+docker compose up -d
 ```
 
+ARM64 环境请使用对应的 ARM64 部署包和镜像。
 
+## 版本历史
 
-## ⭐️ Star History
+### v7.5 (2026-08) - 当前版本
 
-如果这个项目对你有帮助，请给我们一个 Star ⭐️
+- 完善多数据源管理、默认数据源和切换体验。
+- 升级大屏组件、数据库与业务接口监控概览。
+- 重构告警地图，支持更多区域和卫星模式。
+- 增加网络设备分类、接口识别和流量面板。
+- 完善数据库自定义指标、告警规则和巡检能力。
+- 增强业务关联、坐标管理、日志审计和 ARM64 部署。
+
+### v7.2 (2026-06)
+
+- 增加 3D 机房可视化。
+- 完善数据库监控。
+
+### v7.1 (2026-06)
+
+- 数据大屏支持组件订阅和布局调整。
+- 巡检范围增加数据库和 Web 站点。
+
+### v6.1 (2026-03)
+
+- ZabbixWatch 正式更名为 ITOps-Watch。
+- 增加 Prometheus 数据源支持。
+
+### 早期版本
+
+- 持续完善主机监控、网络拓扑、Web 监控、指标管理、告警通知和容器化部署。
+
+## 使用说明
+
+- 卫星地图需要访问在线地图服务；网络不可达时会自动使用标准地图。
+- 数据源是平台业务数据的基础，首次使用需由管理员完成配置。
+- AI 功能需要单独配置可用的大模型服务，未配置时不影响普通监控和告警。
+- 不同版本和授权包含的功能可能有所不同，请以实际交付版本为准。
+
+## 联系方式
+
+- 官网：https://itops-watch.data-demo.cn
+- GitHub：https://github.com/zlpu/ITOps-Watch-demo
+- Gitee：https://gitee.com/root-pu/ITOps-Watch-demo
+- 作者微信：`pzl960504`
+- 联系电话：`18288669701`
+
+## Star History
+
+如果 ITOps-Watch 对你的运维工作有帮助，欢迎 Star 并提交问题反馈。
 
 [![Star History Chart](https://api.star-history.com/svg?repos=zlpu/ITOps-Watch-demo&type=Date)](https://star-history.com/#zlpu/ITOps-Watch-demo&Date)
 
 <br>
 
-
-<div>
-
-### 🌟 如果觉得项目不错，请给个 Star ⭐️
+<div align="center">
 
 <table>
 <tr>
@@ -422,9 +283,8 @@ docker-compose down -v
 </tr>
 </table>
 
+<sub>Copyright © 2025-2026 ITOps-Watch. All rights reserved.</sub>
 
-<sub>Made with ❤️ by **** | Copyright © 2025-2026 ITOps-Watch. All rights reserved.</sub>
-
-**[⬆️ 回到顶部](#itops-watch)**
+**[回到顶部](#itops-watch)**
 
 </div>
