@@ -12,7 +12,8 @@
 
 [官网](https://itops-watch.data-demo.cn) · [GitHub](https://github.com/zlpu/ITOps-Watch-demo) · [Gitee](https://gitee.com/root-pu/ITOps-Watch-demo)
 
-<img width="1910" height="995" alt="image" src="https://github.com/user-attachments/assets/5170cc87-2e62-4591-9594-be9d5ba986dd" />
+<img width="1850" height="996" alt="image" src="https://github.com/user-attachments/assets/7a4011be-9824-4f04-82b4-101a639c68d0" />
+
 
 </div>
 
@@ -107,7 +108,9 @@ ITOps-Watch 不替代现有监控系统，而是在其基础上补充统一展�
 
 数据大屏集中展示监控对象、关键指标、告警和运行趋势，可根据实际环境选择所需组件。
 
-<img width="1910" height="995" alt="image" src="https://github.com/user-attachments/assets/aaff21e4-9708-444d-81b8-6282d77fed18" />
+<img width="1850" height="996" alt="image" src="https://github.com/user-attachments/assets/c5c7b6c5-ee1c-4cb9-b34e-45df6fb6e2d3" />
+
+<img width="1850" height="996" alt="image" src="https://github.com/user-attachments/assets/b40b3c20-a1a8-4bb7-94e2-f5dd478324d3" />
 
 ### 3. 网络拓扑
 
